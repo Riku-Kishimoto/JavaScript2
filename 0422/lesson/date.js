@@ -1,0 +1,3 @@
+export const students = ["田中", "鈴木", "佐藤"];
+
+// ここに書く
