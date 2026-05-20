@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>どうぶつ人気投票</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <h1>どうぶつ人気投票</h1>
+      <p>好きなどうぶつに投票しよう！</p>
+    </header>
+
+    <main>
+      <div id="voteList">
+        <!-- ねこ -->
+        <div class="card" data-id="1">
+          <div class="candidate-image">
+            <img src="./image/cat_sabineko.png" alt="ねこ" />
+          </div>
+
+          <div class="candidate-name">ねこ</div>
+
+          <div class="votes">0票</div>
+
+          <div class="progress-bar">
+            <div class="bar"></div>
+          </div>
+
+          <button class="vote-btn">投票する</button>
+        </div>
+
+        <!-- いぬ -->
+        <div class="card" data-id="2">
+          <div class="candidate-image">
+            <img src="./image/dog_akitainu.png" alt="いぬ" />
+          </div>
+
+          <div class="candidate-name">いぬ</div>
+
+          <div class="votes">0票</div>
+
+          <div class="progress-bar">
+            <div class="bar"></div>
+          </div>
+
+          <button class="vote-btn">投票する</button>
+        </div>
+
+        <!-- インコ -->
+        <div class="card" data-id="3">
+          <div class="candidate-image">
+            <img src="./image/bird_inko_feather_duster.png" alt="インコ" />
+          </div>
+
+          <div class="candidate-name">インコ</div>
+
+          <div class="votes">0票</div>
+
+          <div class="progress-bar">
+            <div class="bar"></div>
+          </div>
+
+          <button class="vote-btn">投票する</button>
+        </div>
+      </div>
+    </main>
+
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>
