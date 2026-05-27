@@ -36,6 +36,11 @@ scroll(animate(".hero-title", { opacity: [1, 0], y: [0, -200] }), {
   offset: ["start 0.3", "start 0"], // heroの上端が画面の30%〜0%に来る間でアニメーション
 });
 
+// 追記：.parallax-section のスクロールに合わせて背景画像を上に動かす
+scroll(animate(".parallax-bg", { y: [0, -300] }), {
+  target: document.querySelector(".parallax-section"),
+});
+
 /* // 監視したい要素を取得（fade-target 内の h2 を監視する）
 const target = document.querySelector(".fade-target h2");
 

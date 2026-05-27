@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>どうぶつ人気投票</title>
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="spacer">スクロールしてください ↓</div>
+      <h1>人気投票</h1>
+      <p>好きな鳥に投票しよう！</p>
+    </header>
+
+    <main>
+      <div id="voteList">
+        <!-- ねこ -->
+        <div class="card" data-id="1">
+          <div class="candidate-image">
+            <img src="./image/kubinaga.png" alt="クビナガカイツブリ" />
+          </div>
+
+          <div class="candidate-name">クビナガカイツブリ</div>
+
+          <div class="votes">0票</div>
+
+          <div class="progress-bar">
+            <div class="bar"></div>
+          </div>
+
+          <button class="vote-btn">投票する</button>
+        </div>
+
+        <!-- いぬ -->
+        <div class="card" data-id="2">
+          <div class="candidate-image">
+            <img src="./image/bird_yairochou.png" alt="ヤイロチョウ" />
+          </div>
+
+          <div class="candidate-name">ヤイロチョウ</div>
+
+          <div class="votes">0票</div>
+
+          <div class="progress-bar">
+            <div class="bar"></div>
+          </div>
+
+          <button class="vote-btn">投票する</button>
+        </div>
+
+        <!-- インコ -->
+        <div class="card" data-id="3">
+          <div class="candidate-image">
+            <img src="./image/bird_inko_feather_duster.png" alt="インコ" />
+          </div>
+
+          <div class="candidate-name">インコ</div>
+
+          <div class="votes">0票</div>
+
+          <div class="progress-bar">
+            <div class="bar"></div>
+          </div>
+
+          <button class="vote-btn">投票する</button>
+        </div>
+      </div>
+    </main>
+    <div class="spacer">↑ ここまでスクロールできます</div>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>

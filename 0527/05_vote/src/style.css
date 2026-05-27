@@ -1,0 +1,104 @@
+/* スクロールできる余白を作るためのダミー要素 */
+.spacer {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  color: #888;
+}
+/* 監視対象を中央に配置するコンテナ */
+.fade-target {
+  display: grid;
+  place-items: center;
+  min-height: 60vh;
+  padding: 2rem;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  background: #f6f7fb;
+  color: #333;
+  padding: 40px 20px;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.hero h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  color: #666;
+}
+
+#voteList {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 20px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.candidate-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.candidate-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.candidate-name {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.votes {
+  color: #666;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 12px;
+  background: #ececec;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.bar {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #7b5cff, #9d7bff);
+  border-radius: 999px;
+}
+/*
+.vote-btn {
+} */
