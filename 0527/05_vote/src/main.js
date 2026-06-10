@@ -1,4 +1,4 @@
-import { animate, inView, stagger } from "motion";
+import { animate, inView, stagger, scroll } from "motion";
 //vote関数 getRates関数を読み込んでいる
 import { vote, getRates } from "./candidates.js";
 
@@ -84,10 +84,17 @@ inView(".card", (element) => {
 });
 
 scroll(
-  animate("body", {
-    backgroundColor: ["#fff9f0", "#fff0f5", "#f0f9ff", "#f0fff4"],
-  }),
-  {
-    offset: ["0%", "33%", "66%", "100%"], // スクロール量に対応
-  },
+  animate(
+    document.body,
+    {
+      backgroundColor: ["#fff9f0", "#fff0f5", "#f0f9ff", "#f0fff4"],
+    },
+    {
+      duration: 1,
+    },
+  ),
 );
+
+scroll((progress) => {
+  console.log(progress);
+});
