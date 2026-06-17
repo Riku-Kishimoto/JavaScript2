@@ -8,13 +8,14 @@ import { renderPokemon, showError, setLoading } from "./view.js";
 //   { rotate: [0, 360] },
 //   { duration: 1, repeat: Infinity, ease: "linear" },
 // );
+
 animate(
   ".spinner",
   {
     rotate: [0, 360],
   },
   {
-    duration: 2,
+    duration: 1,
     repeat: Infinity,
     ease: "linear",
   },

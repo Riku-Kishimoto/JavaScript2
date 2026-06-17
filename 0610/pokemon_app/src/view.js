@@ -28,9 +28,9 @@ export const renderPokemon = (data) => {
   const types = data.types.map((t) => typeJa[t.type.name]).join(" / ");
   card.innerHTML = `
     <h2>${data.jpName}</h2>
-    <p>タイプ: ${types}</p>
-    <p>身長: ${data.height / 10}m</p>
-    <p>体重: ${data.weight / 10}kg</p>
+    <p>タイプ : ${types}</p>
+    <p>身長 : ${data.height / 10}m</p>
+    <p>体重 : ${data.weight / 10}kg</p>
     <img src="${data.sprites.front_default}" alt="${data.name}">
   `;
   card.hidden = false;

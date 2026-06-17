@@ -1,0 +1,112 @@
+import { animate, inView, stagger, scroll } from "motion";
+//vote関数 getRates関数を読み込んでいる
+import { vote, getRates, resetCandidates } from "./candidates.js";
+//ここに入っているのは関数名=関数の定義ということは関数の実行が必要
+
+animate(
+  ".hero h1",
+  { opacity: [0, 1], y: [-20, 0] },
+  { duration: 0.8, easing: "ease-out" },
+);
+animate(
+  ".hero p",
+  { opacity: [0, 1], y: [10, 0] },
+  { duration: 0.8, delay: 0.25, easing: "ease-out" },
+);
+
+const animateBars = () => {
+  const rates = getRates();
+  rates.forEach(({ id, rate }) => {
+    const bar = document.querySelector(`[data-id="${id}"] .bar`);
+    animate(bar, { width: `${rate}%` }, { duration: 0.6, easing: "spring" });
+  });
+};
+
+const cards = document.querySelectorAll(".card");
+cards.forEach((card) => {
+  const id = Number(card.dataset.id);
+  const btn = card.querySelector(".vote-btn");
+
+  btn.addEventListener("click", () => {
+    vote(id);
+    animate(btn, { scale: [1, 1.3, 0.9, 1] }, { duration: 0.4 });
+    animateBars();
+  });
+});
+
+inView(".card", (element) => {
+  const index = [...cards].indexOf(element);
+
+  animate(
+    element,
+    { opacity: [0, 1], y: [40, 0], scale: [0.95, 1] },
+    {
+      duration: 0.7,
+      delay: index * 0.12,
+      easing: "ease-out",
+    },
+  );
+
+  animate(
+    element.querySelector(".candidate-image"),
+    { opacity: [0, 1], scale: [0.8, 1] },
+    { duration: 0.5, delay: index * 0.12 + 0.2, easing: "ease-out" },
+  );
+
+  animate(
+    element.querySelector(".candidate-name"),
+    { opacity: [0, 1], y: [10, 0] },
+    { duration: 0.4, delay: index * 0.12 + 0.35, easing: "ease-out" },
+  );
+
+  animate(
+    element.querySelector(".votes"),
+    { opacity: [0, 1], y: [10, 0] },
+    { duration: 0.4, delay: index * 0.12 + 0.45, easing: "ease-out" },
+  );
+
+  animate(
+    element.querySelector(".vote-btn"),
+    { opacity: [0, 1], y: [10, 0] },
+    { duration: 0.4, delay: index * 0.12 + 0.55, easing: "ease-out" },
+  );
+
+  return () => {
+    [
+      element,
+      element.querySelector(".candidate-image"),
+      element.querySelector(".candidate-name"),
+      element.querySelector(".votes"),
+      element.querySelector(".vote-btn"),
+    ].forEach((el) => {
+      animate(el, { opacity: 0, y: 10 }, { duration: 0 });
+    });
+  };
+});
+
+scroll(
+  animate(
+    document.body,
+    {
+      backgroundColor: ["#fff9f0", "#fff0f5", "#f0f9ff", "#f0fff4"],
+    },
+    {
+      duration: 1,
+    },
+  ),
+);
+
+scroll((progress) => {
+  console.log(progress);
+});
+
+const resetButton = document.querySelector("#resetBtn");
+resetButton.addEventListener("click", () => {
+  //confirmをキャンセルしたらreturnするとその下のプログラムは走らない
+  if (!confirm("票数をリセットしますか？")) return;
+
+  resetCandidates();
+  animateBars(); // ← リセット後にバーも初期状態へ戻す
+});
+
+// animateBars();

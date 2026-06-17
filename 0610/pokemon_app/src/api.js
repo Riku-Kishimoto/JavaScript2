@@ -11,5 +11,6 @@ export const getPokemon = async (name, signal) => {
   const speciesData = await speciesRes.json();
   const jpName = speciesData.names.find((n) => n.language.name === "ja");
   data.jpName = jpName?.name ?? data.name;
+
   return data;
 };
