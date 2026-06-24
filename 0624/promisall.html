@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>複数API</title>
+  </head>
+  <body>
+    <script>
+      // ポケモンと天気予報のAPIを同時に取得する
+      // 複数のAPIを使ってシステムを作ることをマッシュアップと言う
+      // 関数の定義(非同期通信) 引数なし
+      async function loadAll() {
+        // 分割代入(配列版)
+        //fetchで呼び出されたデータがそのまま、順番通りにweather(オブジェクト),pokemon(オブジェクト)に入る
+        const [weather, pokemon] = await Promise.all([
+          fetch(
+            "https://www.jma.go.jp/bosai/forecast/data/forecast/130000.json",
+          ).then((r) => r.json()),
+          fetch("https://pokeapi.co/api/v2/pokemon/pikachu").then((r) =>
+            r.json(),
+          ),
+        ]);
+        console.log(weather, pokemon);
+      }
+      loadAll();
+    </script>
+  </body>
+</html>
