@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <!-- 次のHTMLがあります。.box を取得し、横方向へ300px移動するアニメーションを 2秒
+  かけて実行するコードとして正しいものを1つ選択してください。  -->
+  <body>
+    <div class="box"></div>
+    <script src="https://cdn.jsdelivr.net/npm/motion@latest/dist/motion.js"></script>
+    <script>
+      const box = document.querySelector(".box");
+      // ここにJavaScriptを記述
+      motion.animate(box, { x: 300 }, { duration: 2 });
+    </script>
+  </body>
+</html>

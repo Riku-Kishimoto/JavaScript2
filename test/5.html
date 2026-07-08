@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn1">りんご</button>
+    <button id="btn2">みかん</button>
+    <button id="btn3">バナナ</button>
+    <p id="message"></p>
+    <script>
+      //   次のHTMLがあります。3つのボタンのいずれかをクリックしたときに、#message に 「○○が選択されました。」 と表示するプログラムを作成してください。表示する文字列は showMessage() という名前のアロー関数へ引数として渡すようにしてください。また、各ボタンには addEventListener() を使用してください。JavaScriptのコードのみを入力してください。
+      const btn = document.querySelector("button");
+      const id = document.querySelector("id");
+
+      showMessage.addEventListener("click", () => {
+        console.log(`${id}が選択されました。`);
+      });
+
+      showMessage();
+    </script>
+  </body>
+</html>
