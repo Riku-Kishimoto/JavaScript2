@@ -21,10 +21,6 @@ export default function ItemDetail({ favorites, cart }) {
       const found = data.find((i) => i.id === id);
       setItem(found ?? null);
 
-      // 同じ著者の他の本を関連商品として表示する。
-      // ※ 著者名は現状 item.color フィールドに入っている
-      //   （アパレル向けテンプレートの名残と思われるので、
-      //   落ち着いたら author フィールドへ移行するのがおすすめ）
       if (found) {
         const related = data
           .filter(
@@ -40,8 +36,6 @@ export default function ItemDetail({ favorites, cart }) {
     });
   }, [id]);
 
-  // theme === "newsreel" のページでだけ、たまに数秒間だけ
-  // ページ全体にニュースリール演出のバーストを走らせる
   useEffect(() => {
     if (!item || item.theme !== "newsreel") return;
 
@@ -49,10 +43,10 @@ export default function ItemDetail({ favorites, cart }) {
     let burstTimer;
 
     const scheduleNext = () => {
-      const gap = 8000 + Math.random() * 9000; // 次のバーストまで 8〜17秒
+      const gap = 8000 + Math.random() * 9000;
       gapTimer = setTimeout(() => {
         setFlash(true);
-        const duration = 700 + Math.random() * 700; // バーストの長さ 0.7〜1.4秒
+        const duration = 700 + Math.random() * 700;
         burstTimer = setTimeout(() => {
           setFlash(false);
           scheduleNext();
@@ -68,11 +62,7 @@ export default function ItemDetail({ favorites, cart }) {
   }, [item]);
 
   if (loading) {
-    return (
-      <div className="loading">
-        <BookLoader />
-      </div>
-    );
+    return <p className="loading">読み込み中...</p>;
   }
 
   // アイテムが見つからなかった場合

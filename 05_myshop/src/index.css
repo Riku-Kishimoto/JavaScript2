@@ -498,6 +498,31 @@ img {
   color: var(--color-muted);
 }
 
+.item-detail__related {
+  grid-column: 1 / -1;
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--color-border);
+}
+
+.item-detail__related-title {
+  margin: 0 0 24px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.04em;
+}
+
+.item-detail__related-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
 /* ---------- About / Favorites / Cart（雛形） ---------- */
 
 .page-placeholder {
