@@ -1,0 +1,21 @@
+# 特定のファイルを隠す
+
+vite.config.js
+firebase.js
+.firebaserc
+.gitattributes
+.gitignore
+README.md
+
+# 特定のフォルダまるごと隠す（末尾に / をつける）
+
+public/
+node_modules/
+dist/
+.firebase/
+src/hooks/
+
+# 特定の種類のファイルをまとめて隠す
+
+_.json
+_.
