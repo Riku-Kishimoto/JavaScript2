@@ -7,7 +7,12 @@ import ItemCard from "../components/ItemCard.jsx";
 
 const RELATED_LIMIT = 4;
 
-export default function ItemDetail({ favorites, cart }) {
+export default function ItemDetail({
+  favorites,
+  cart,
+  handleFavorite,
+  handleAddToCart,
+}) {
   // URLパラメータを取得
   const { id } = useParams();
   const [item, setItem] = useState(null);
@@ -122,6 +127,28 @@ export default function ItemDetail({ favorites, cart }) {
             <dd>{item.size}</dd>
           </div>
         </dl>
+        <div className="item-detail__actions">
+          <button
+            type="button"
+            className={
+              favorites.has(item.id)
+                ? "item-detail__fav is-active"
+                : "item-detail__fav"
+            }
+            onClick={() => handleFavorite(item.id)}
+          >
+            ♡
+          </button>
+
+          <button
+            type="button"
+            className="item-detail__cart"
+            onClick={() => handleAddToCart(item)}
+            disabled={item.status === "soldout"}
+          >
+            カートに入れる
+          </button>
+        </div>
       </div>
 
       {relatedItems.length > 0 && (
