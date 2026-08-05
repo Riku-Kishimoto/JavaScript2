@@ -33,7 +33,7 @@ export default function ItemCard({ item, favorites, cart }) {
         }
         onClick={handleFavorite}
       >
-        ♡
+        {favorites.has(item.id) ? "♥" : "♡"}
       </button>
       <button
         type="button"
@@ -41,7 +41,7 @@ export default function ItemCard({ item, favorites, cart }) {
         onClick={handleAddToCart}
         disabled={item.status === "soldout"}
       >
-        カートに入れる
+        {item.status === "soldout" ? "在庫なし" : "カートに入れる"}
       </button>
     </Link>
   );

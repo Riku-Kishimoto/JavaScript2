@@ -19,6 +19,10 @@ export default function ItemDetail({
   const [relatedItems, setRelatedItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [flash, setFlash] = useState(false);
+  const [reviews, setReviews] = useState([]);
+  const [reviewName, setReviewName] = useState("");
+  const [reviewText, setReviewText] = useState("");
+  const [reviewRating, setReviewRating] = useState(5);
 
   useEffect(() => {
     getDocs(collection(db, "items")).then((snapshot) => {
@@ -82,6 +86,41 @@ export default function ItemDetail({
     );
   }
 
+  const handleDetailFavorite = (e) => {
+    e.preventDefault();
+
+    if (favorites.has(item.id)) {
+      favorites.remove(item.id);
+    } else {
+      favorites.add(item.id);
+    }
+  };
+
+  const handleDetailAddToCart = (e) => {
+    e.preventDefault();
+    cart.add(item.id);
+  };
+
+  const handleReviewSubmit = (e) => {
+    e.preventDefault();
+
+    if (!reviewText.trim()) return;
+
+    setReviews([
+      ...reviews,
+      {
+        id: Date.now(),
+        name: reviewName.trim() || "名無し",
+        text: reviewText.trim(),
+        rating: reviewRating,
+      },
+    ]);
+
+    setReviewName("");
+    setReviewText("");
+    setReviewRating(5);
+  };
+
   const isNewsreel = item.theme === "newsreel";
   const isFlashing = isNewsreel && flash;
 
@@ -135,21 +174,90 @@ export default function ItemDetail({
                 ? "item-detail__fav is-active"
                 : "item-detail__fav"
             }
-            onClick={() => handleFavorite(item.id)}
+            onClick={handleDetailFavorite}
           >
-            ♡
+            {favorites.has(item.id) ? "♥" : "♡"}
           </button>
 
           <button
             type="button"
             className="item-detail__cart"
-            onClick={() => handleAddToCart(item)}
+            onClick={handleAddToCart}
             disabled={item.status === "soldout"}
           >
-            カートに入れる
+            {item.status === "soldout" ? "在庫なし" : "カートに入れる"}
           </button>
         </div>
       </div>
+
+      <section className="item-detail__reviews">
+        <h3 className="item-detail__reviews-title">レビュー</h3>
+
+        <div className="item-detail__reviews-layout">
+          <div className="item-detail__review-sample">
+            <p className="item-detail__review-sample-title">読者レビュー</p>
+            <p className="item-detail__review-stars">★★★★★</p>
+            <p className="item-detail__review-sample-text">
+              装丁がきれいで、手元に置いておきたくなる一冊でした。内容も読みやすく、贈り物にもよさそうです。
+            </p>
+            <p className="item-detail__review-sample-author">田中さん</p>
+          </div>
+
+          <form
+            className="item-detail__review-form"
+            onSubmit={handleReviewSubmit}
+          >
+            <input
+              type="text"
+              className="item-detail__review-name"
+              placeholder="名前"
+              value={reviewName}
+              onChange={(e) => setReviewName(e.target.value)}
+            />
+
+            <div className="item-detail__rating">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <button
+                  key={star}
+                  type="button"
+                  className={
+                    star <= reviewRating
+                      ? "item-detail__rating-star is-active"
+                      : "item-detail__rating-star"
+                  }
+                  onClick={() => setReviewRating(star)}
+                >
+                  ★
+                </button>
+              ))}
+            </div>
+
+            <textarea
+              className="item-detail__review-text"
+              placeholder="レビューを書く"
+              value={reviewText}
+              onChange={(e) => setReviewText(e.target.value)}
+            />
+
+            <button type="submit" className="item-detail__review-submit">
+              投稿する
+            </button>
+          </form>
+        </div>
+
+        <ul className="item-detail__review-list">
+          {reviews.map((review) => (
+            <li key={review.id} className="item-detail__review">
+              <p className="item-detail__review-author">{review.name}</p>
+              <p className="item-detail__review-stars">
+                {"★".repeat(review.rating)}
+                {"☆".repeat(5 - review.rating)}
+              </p>
+              <p className="item-detail__review-body">{review.text}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
 
       {relatedItems.length > 0 && (
         <section className="item-detail__related">

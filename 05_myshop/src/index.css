@@ -571,6 +571,141 @@ img {
   color: var(--color-muted);
   cursor: not-allowed;
 }
+
+.item-detail__reviews {
+  margin-top: 40px;
+}
+
+.item-detail__reviews-title {
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.item-detail__review-form {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 24px;
+  margin-top: 44px;
+}
+
+.item-detail__review-name,
+.item-detail__review-text {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font: inherit;
+}
+
+.item-detail__review-text {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.item-detail__review-submit {
+  width: fit-content;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  background: #222;
+  color: #fff;
+  cursor: pointer;
+}
+
+.item-detail__review-list {
+  display: grid;
+  gap: 12px;
+  padding: 0;
+  list-style: none;
+}
+
+.item-detail__review {
+  padding: 16px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+}
+
+.item-detail__review-author {
+  margin: 0 0 8px;
+  font-weight: bold;
+}
+
+.item-detail__review-body {
+  margin: 0;
+}
+
+.item-detail__review-sample {
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  background: #fafafa;
+}
+
+.item-detail__review-sample-title {
+  margin: 0 0 8px;
+  font-weight: bold;
+}
+
+.item-detail__review-stars {
+  margin: 0 0 10px;
+  color: #d6a100;
+  letter-spacing: 2px;
+}
+
+.item-detail__review-sample-text {
+  margin: 0 0 12px;
+  line-height: 1.8;
+}
+
+.item-detail__review-sample-author {
+  margin: 0;
+  font-size: 14px;
+  color: #777;
+}
+
+.item-detail__rating {
+  display: flex;
+  gap: 4px;
+}
+
+.item-detail__rating-star {
+  border: none;
+  background: transparent;
+  color: #ccc;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.item-detail__rating-star.is-active {
+  color: #d6a100;
+}
+
+.item-detail__reviews {
+  margin-top: 40px;
+  max-width: 720px;
+}
+
+.item-detail__review-form {
+  width: 100%;
+  max-width: 640px;
+}
+
+.item-detail__review-name,
+.item-detail__review-text {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.item-detail__review-text {
+  min-height: 140px;
+}
+
+@media (max-width: 768px) {
+  .item-detail__reviews-layout {
+    grid-template-columns: 1fr;
+  }
+}
 /* ---------- About / Favorites / Cart（雛形） ---------- */
 
 .page-placeholder {
