@@ -194,13 +194,29 @@ export default function ItemDetail({
         <h3 className="item-detail__reviews-title">レビュー</h3>
 
         <div className="item-detail__reviews-layout">
-          <div className="item-detail__review-sample">
-            <p className="item-detail__review-sample-title">読者レビュー</p>
-            <p className="item-detail__review-stars">★★★★★</p>
-            <p className="item-detail__review-sample-text">
-              装丁がきれいで、手元に置いておきたくなる一冊でした。内容も読みやすく、贈り物にもよさそうです。
-            </p>
-            <p className="item-detail__review-sample-author">田中さん</p>
+          <div className="item-detail__review-list">
+            <div className="item-detail__review-sample">
+              <p className="item-detail__review-sample-title">読者レビュー</p>
+              <p className="item-detail__review-stars">★★★★★</p>
+              <p className="item-detail__review-sample-text">
+                装丁がきれいで、手元に置いておきたくなる一冊でした。内容も読みやすく、贈り物にもよさそうです。
+              </p>
+              <p className="item-detail__review-sample-author">田中さん</p>
+            </div>
+
+            {reviews.map((review) => (
+              <div key={review.id} className="item-detail__review-sample">
+                <p className="item-detail__review-sample-title">読者レビュー</p>
+                <p className="item-detail__review-stars">
+                  {"★".repeat(review.rating)}
+                  {"☆".repeat(5 - review.rating)}
+                </p>
+                <p className="item-detail__review-sample-text">{review.text}</p>
+                <p className="item-detail__review-sample-author">
+                  {review.name}
+                </p>
+              </div>
+            ))}
           </div>
 
           <form
@@ -244,19 +260,6 @@ export default function ItemDetail({
             </button>
           </form>
         </div>
-
-        <ul className="item-detail__review-list">
-          {reviews.map((review) => (
-            <li key={review.id} className="item-detail__review">
-              <p className="item-detail__review-author">{review.name}</p>
-              <p className="item-detail__review-stars">
-                {"★".repeat(review.rating)}
-                {"☆".repeat(5 - review.rating)}
-              </p>
-              <p className="item-detail__review-body">{review.text}</p>
-            </li>
-          ))}
-        </ul>
       </section>
 
       {relatedItems.length > 0 && (
